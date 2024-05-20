@@ -17,9 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet var twoLabel: UILabel!
     @IBOutlet var threeLabel: UILabel!
     
-    
+    var count = [0, 0, 0]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .black
         
         // labelName: 매개변수(parameter)
         // oneLabel, twoLabel .... : 전달 인자(argument)
@@ -34,11 +37,29 @@ class ViewController: UIViewController {
     
     }
     
-    // 외부 매개변수를 생략하는 거 구나!
+    // _ ->외부 매개변수를 생략하는 거 구나!
+    // 1. 어떤 버튼을 클릭했는지 어떻게 아나요? -> 매개변수 존재!
+    // -> currentTitle (옵셔널 조심, 버전 조심)
+    // -> tag
     @IBAction func oneButtonClicked(_ sender: UIButton) {
-        oneLabel.text = "클릭됨!"
+        
+        print("tag: \(sender.tag)") // 현재 사용하는 타이틀이 뭔지!
+        
+//        if sender.tag == 0 {
+//            count[sender.tag] += 1
+//        } else if sender.tag == 1 {
+//            count[1] += 1
+//        } else {
+//            count[2] += 1
+//        }
+        
+        count[sender.tag] += 1
+        
+        oneLabel.text = "\(count[0])번 클릭"
+        twoLabel.text = "\(count[1])번 클릭"
+        threeLabel.text = "\(count[2])번 클릭"
+       
     }
-    
     
     // 매개변수(parameter)
     // 외부 매개변수(Argument Label) ex)thisIsTextColor
@@ -46,7 +67,7 @@ class ViewController: UIViewController {
     func designLabelUI(_ a: UILabel, thisIsTextColor jack: UIColor) {
         // labelName -> 함수 안에서만 사용되는 변수 만듦
         
-        a.text = "0"
+        a.text = "0번"
         a.textColor = jack
         a.font = .boldSystemFont(ofSize: 30)
         a.textAlignment = .center
