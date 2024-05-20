@@ -62,8 +62,19 @@ class ViewController: UIViewController {
 //        twoLabel.text = "\(count[1])번 클릭"
 //        threeLabel.text = "\(count[2])번 클릭"
         labelList[sender.tag].text = "\(count[sender.tag])번 클릭"
-       
     }
+    
+    @IBAction func imageViewTapped(_ sender: UITapGestureRecognizer) {
+        print("imageView tapped")
+    }
+    
+    // 1. did end on exit (returnKey 눌렀을 때)
+    // 2. view.endEditing(true) (언제 어디서든 적용 가능)
+    @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
     
     // 매개변수(parameter)
     // 외부 매개변수(Argument Label) ex)thisIsTextColor
@@ -73,7 +84,7 @@ class ViewController: UIViewController {
         
         a.text = "0번"
         a.textColor = jack
-        a.font = .boldSystemFont(ofSize: 30)
+        a.font = .boldSystemFont(ofSize: 20)
         a.textAlignment = .center
         
     }
